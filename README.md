@@ -64,3 +64,14 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+
+```
+This course will cover 4 different types of tests:
+
+* **Unit tests**: Focus on isolating and testing individual smart contract functions or functionalities.
+* **Integration tests**: Verify how a smart contract interacts with other contracts or external systems.
+* **Forking tests**: Forking refers to creating a copy of a blockchain state at a specific point in time. This copy, called a fork, is then used to run tests in a simulated environment.
+* **Staging tests**: Execute tests against a deployed smart contract on a staging environment before mainnet deployment.
+
+```
