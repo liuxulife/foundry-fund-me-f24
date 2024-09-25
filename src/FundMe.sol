@@ -26,8 +26,7 @@ contract FundMe {
     }
 
     function fund() public payable {
-        require(msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD, 
-            "You need to spend more ETH!");
+        require(msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD, "You need to spend more ETH!");
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         s_addressToAmountFunded[msg.sender] += msg.value;
         s_funders.push(msg.sender);
@@ -45,12 +44,12 @@ contract FundMe {
 
     function cheaperWithdraw() public onlyOwner {
         uint256 funderLength = s_funders.length;
-        for(uint256 funderIndex = 0; funderIndex < funderLength; funderIndex++) {
-             address funder = s_funders[funderIndex];
+        for (uint256 funderIndex = 0; funderIndex < funderLength; funderIndex++) {
+            address funder = s_funders[funderIndex];
             s_addressToAmountFunded[funder] = 0;
         }
         s_funders = new address[](0);
-             // call
+        // call
         (bool callSuccess,) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
     }
@@ -84,7 +83,7 @@ contract FundMe {
     function getOwner() public view returns (address) {
         return i_owner;
     }
-  
+
     // Explainer from: https://solidity-by-example.org/fallback/
     // Ether is sent to contract
     //      is msg.data empty?
